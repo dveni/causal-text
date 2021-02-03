@@ -200,12 +200,12 @@ def run_experiment(args):
             cbw = CausalBert.CausalBertWrapper(g_weight=args.g_weight, Q_weight=args.Q_weight, mlm_weight=args.mlm_weight)
             cbw.train(df['text'], df.C_true, df.T_proxy, df.Y_sim, epochs=3)
             ATE_cb_Tproxy = cbw.ATE(df.C_true, df['text'], Y=df.Y_sim, platt_scaling=False)
-            ATE_estimates.append(('ate_cb_T_proxy', ATE_T_plus_pu))
+            ATE_estimates.append(('ate_cb_T_proxy', ATE_cb_Tproxy))
 
             cbw = CausalBert.CausalBertWrapper(g_weight=args.g_weight, Q_weight=args.Q_weight, mlm_weight=args.mlm_weight)
             cbw.train(df['text'], df.C_true, T_plus_pu, df.Y_sim, epochs=3)
             ATE_cb_Tplus = cbw.ATE(df.C_true, df['text'], Y=df.Y_sim, platt_scaling=False)
-            ATE_estimates.append(('ate_cb_T_plus', ATE_T_plus_pu))
+            ATE_estimates.append(('ate_cb_T_plus', ATE_cb_Tplus))
 
     return dict(ATE_estimates)
 

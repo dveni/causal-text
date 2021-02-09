@@ -21,6 +21,7 @@ import label_expansion
 import util
 
 import json
+import os
 
 import CausalBert
 
@@ -244,5 +245,6 @@ if __name__ == '__main__':
     out = {**vars(args), **results}
     print(out)
     with open('output.json', 'a') as f:
-        f.write(json.dump(out) + "\n")
+        json.dump(out, f)
+        f.write(os.linesep)
     quit()

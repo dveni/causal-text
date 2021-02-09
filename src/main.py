@@ -20,7 +20,7 @@ import simulation
 import label_expansion
 import util
 
-import csv
+import json
 
 import CausalBert
 
@@ -243,7 +243,6 @@ if __name__ == '__main__':
     results = run_experiment(args)
     out = {**vars(args), **results}
     print(out)
-    with open(r'output', 'a') as f:
-        writer = csv.writer(f)
-        writer.writerow(out)
+    with open('output.json', 'a') as f:
+        f.write(json.dump(out) + "\n")
     quit()

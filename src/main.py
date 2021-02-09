@@ -20,6 +20,8 @@ import simulation
 import label_expansion
 import util
 
+import json
+
 import CausalBert
 
 def prepare_covariates(df, 
@@ -241,5 +243,6 @@ if __name__ == '__main__':
     results = run_experiment(args)
     out = {**vars(args), **results}
     print(out)
-
+    with open('output.json', 'a') as f:
+        json.dump(out, f)
     quit()

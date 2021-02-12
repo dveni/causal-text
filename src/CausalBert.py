@@ -11,7 +11,6 @@ import pickle
 
 import scipy
 from sklearn.model_selection import KFold
-from keras.preprocessing.sequence import pad_sequences
 from torch.utils.data import Dataset, TensorDataset, DataLoader, RandomSampler, SequentialSampler
 from transformers import BertTokenizer
 from transformers import BertModel, BertPreTrainedModel, AdamW, BertConfig
